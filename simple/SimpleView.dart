@@ -7,6 +7,8 @@
 
 class SimpleHandle implements ViewHandle {
   Element element;
+  
+  SimpleHandle(this.element);
 }
 
 class SimpleView implements View<SimpleHandle,Graph<Vertex,Edge>,Vertex> {
@@ -45,7 +47,7 @@ class SimpleView implements View<SimpleHandle,Graph<Vertex,Edge>,Vertex> {
       controller.applyChange(change);
     });
     verticesElement.nodes.add(newVertexElement);
-    return newVertexElement;
+    return new SimpleHandle(newVertexElement);
   }
   
   SimpleHandle renderNewEdge(Edge e) {
@@ -57,7 +59,7 @@ class SimpleView implements View<SimpleHandle,Graph<Vertex,Edge>,Vertex> {
       controller.applyChange(change);
     });
     edgesElement.nodes.add(newEdgeElement);
-    return newEdgeElement;
+    return new SimpleHandle(newEdgeElement);
   }
   
   renderUpdatedVertex(Vertex v, SimpleHandle h) {

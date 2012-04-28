@@ -33,8 +33,10 @@ class Canvas2DView implements View<Canvas2DHandle,Graph<Drawable2D,Edge>,Drawabl
   }
   
   Canvas2DHandle renderNewVertex(Drawable2D v) {
-    if (v is Colorable)
-      ctx.fillStyle = v.getColor();
+    if (v is Colorable) {
+      Colorable vc = v.dynamic;
+      ctx.fillStyle = vc.getColor();
+    }
     ctx.beginPath();
     ctx.arc(v.getX(), v.getY(), vertexRadius, 0, Math.PI*2, true);
     ctx.closePath();
@@ -52,9 +54,11 @@ class Canvas2DView implements View<Canvas2DHandle,Graph<Drawable2D,Edge>,Drawabl
     var vertices = e.getVertices();
     var v1 = graph.getVertex(vertices[0]);
     var v2 = graph.getVertex(vertices[1]);
-    if (e is Colorable)
-      ctx.strokeStyle = e.getColor();
-    ctx.lineWidth = 2; 
+    if (e is Colorable) {
+      Colorable ec = e.dynamic; 
+      ctx.strokeStyle = ec.getColor();
+    }
+    ctx.lineWidth = 2;
     ctx.beginPath();
     ctx.moveTo(v1.getX(),v1.getY());
     ctx.lineTo(v2.getX(),v2.getY());

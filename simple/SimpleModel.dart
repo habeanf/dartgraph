@@ -1,7 +1,7 @@
 #library ('SimpleMVC');
 #import ('../abstractmvc/model.dart');
 
-class Vertex2D implements Drawable2D {
+class Vertex2D implements Drawable2D,Colorable {
   int id;
   double x,y;
   
@@ -12,6 +12,10 @@ class Vertex2D implements Drawable2D {
   
   String toString() {
     return '[${x},${y}]';
+  }
+  
+  String getColor() {
+    return '#ff00ff';
   }
   
   num getX() {return x;}
@@ -33,12 +37,12 @@ class SimpleEdge implements DirectedEdge {
   }
 }
 
-class SimpleGraph implements Graph<SimpleVertex,SimpleEdge> {
+class SimpleGraph implements Graph<Vertex2D,SimpleEdge> {
   Map _vertices;
   Map _edges;
   int maxVertexId,maxEdgeId;
   
-  SimpleGraph(Collection<SimpleVertex> vertices, Collection<SimpleEdge> edges) {
+  SimpleGraph(Collection<Vertex2D> vertices, Collection<SimpleEdge> edges) {
     _vertices = new Map();
     _edges = new Map();
     maxVertexId = -1;
@@ -53,11 +57,11 @@ class SimpleGraph implements Graph<SimpleVertex,SimpleEdge> {
     };
    }
   
-  SimpleVertex getVertex(int vertexId) {
+  Vertex2D getVertex(int vertexId) {
     return _vertices[vertexId];
   }
 
-  SimpleVertex createVertex(SimpleVertex v) {
+  Vertex2D createVertex(Vertex2D v) {
     maxVertexId++;
     v.id = maxVertexId;
     _vertices[v.id]=v;
@@ -91,7 +95,7 @@ class SimpleGraph implements Graph<SimpleVertex,SimpleEdge> {
     _edges.remove(e.id);
   }
   
-  Collection<SimpleVertex> getAllVertices() {
+  Collection<Vertex2D> getAllVertices() {
     return _vertices.getValues();
   }
   Collection<SimpleEdge> getAllEdges() {

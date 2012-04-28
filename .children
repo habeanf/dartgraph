@@ -5,4 +5,6 @@ simple/SimpleController.dart
 abstractmvc/controller.dart
 abstractmvc/change.dart
 abstractmvc/model.dart
+3d/Vertex3D.dart
 abstractmvc/view.dart
+Canvas2DView.dart

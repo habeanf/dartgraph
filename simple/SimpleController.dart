@@ -1,3 +1,4 @@
+#library ('SimpleMVC');
 #import ('../abstractmvc/controller.dart');
 #import ('../abstractmvc/view.dart');
 #import ('../abstractmvc/model.dart');

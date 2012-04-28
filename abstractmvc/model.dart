@@ -2,11 +2,26 @@
 
 interface Vertex {
   int id;
+  String toString();
 }
 
 interface Edge<T> {
   int id;
   T getVertices();
+  String toString();
+}
+
+interface Drawable2D extends Vertex {
+  num getX();
+  num getY();
+}
+
+interface Drawable3D extends Drawable2D {
+  num getZ();
+}
+
+interface Colorable {
+  String getColor();
 }
 
 interface Graph<V,E> {
@@ -33,3 +48,5 @@ interface UndirectedEdge extends Edge<Set> {
   int id;
   Set getVertices();
 }
+
+class UnknownEdgeTypeException implements Exception {}

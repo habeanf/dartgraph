@@ -6,17 +6,17 @@ interface ViewHandle {
 
 }
 
-interface View<Handle> {
-  Graph graph;
+interface View<Handle,G,V> {
+  G graph;
   
-  setModel(Graph g);
+  setModel(G g);
   
-  Handle renderNewVertex(Vertex v);
+  Handle renderNewVertex(V v);
   Handle renderNewEdge(Edge e);
   
-  renderUpdatedVertex(Vertex v, Handle h);
+  renderUpdatedVertex(V v, Handle h);
   renderUpdatedEdge(Edge e, Handle h);
   
-  renderDeletedVertex(Vertex v, Handle h);
+  renderDeletedVertex(V v, Handle h);
   renderDeletedEdge(Edge e, Handle h);
 }

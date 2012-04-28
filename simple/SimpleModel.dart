@@ -1,16 +1,28 @@
+#library ('SimpleMVC');
 #import ('../abstractmvc/model.dart');
 
-class SimpleVertex implements Vertex {
-  int id,x,y;
+class Vertex2D implements Drawable2D {
+  int id;
+  double x,y;
+  
+  Vertex2D(id,List<double> coordinates) :
+    id = id,
+    x = coordinates[0],
+    y = coordinates[1];
   
   String toString() {
     return '[${x},${y}]';
   }
+  
+  num getX() {return x;}
+  num getY() {return y;}
 }
 
 class SimpleEdge implements DirectedEdge {
   int id;
   int fromVertex,toVertex;
+  
+  SimpleEdge(this.id,this.fromVertex,this.toVertex);
   
   List getVertices() {
     return [fromVertex,toVertex];
